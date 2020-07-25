@@ -100,8 +100,10 @@ router.post('/:id/orders', async (req, res) => {
 
 // GET
 // Get order by name
-router.get('/:id/orders/:name', (req, res) => {
-  res.json({ message: 'not_implemented' });
+router.get('/:id/orders/:name', async (req, res) => {
+  const { id: chaistandId, name } = req.params;
+  const order = await ordersModel.find({ chaistandId, name });
+  res.json(order);
 });
 
 // PATCH

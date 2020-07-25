@@ -19,7 +19,7 @@ POST {{url}}/api/{{chaistandId}}/orders
 Content-Type: application/json
 
 {
-    "name": "Sakina",
+    "name": "Mohammed",
     "cups": 1,
     "mixins": [
         {
@@ -30,7 +30,7 @@ Content-Type: application/json
         {
             "_id":"5f1cb905c6b8ba5e59efc8a4",
             "name":"Sugar",
-            "amount":"2"
+            "amount":"1"
         }
     ]
 }
@@ -38,3 +38,7 @@ Content-Type: application/json
 ###
 ### Get all orders
 GET {{url}}/api/{{chaistandId}}/orders
+
+###
+### Get order by name
+GET {{url}}/api/{{chaistandId}}/orders/Sakina
