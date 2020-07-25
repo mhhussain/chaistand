@@ -32,8 +32,8 @@ router.post('/', async (req, res) => {
       const createdChaistand = await chaistandModel.create(val);
       res.json(createdChaistand);
     })
-    .catch((e) => {
-      res.status(500).json(e);
+    .catch(({ name, errors }) => {
+      res.status(500).json({ name, errors });
     });
 });
 
@@ -93,8 +93,8 @@ router.post('/:id/orders', async (req, res) => {
       const createdOrder = await ordersModel.create(newOrder);
       res.json(createdOrder);
     })
-    .catch((e) => {
-      res.status(500).json(e);
+    .catch(({ name, errors }) => {
+      res.status(500).json({ name, errors });
     });
 });
 

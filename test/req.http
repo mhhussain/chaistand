@@ -1,0 +1,40 @@
+@url=http://localhost:9002
+@chaistandId=5f1cbf0a841bd95994c3d692
+
+###
+### Get all chaistands
+GET {{url}}/api
+
+###
+### Get chaistand by id
+GET {{url}}/api/{{chaistandId}}
+
+###
+### Get all mixins
+GET {{url}}/api/mixins
+
+###
+### Create order
+POST {{url}}/api/{{chaistandId}}/orders
+Content-Type: application/json
+
+{
+    "name": "Sakina",
+    "cups": 1,
+    "mixins": [
+        {
+            "_id":"5f1cb8f7c6b8ba5e59efc8a3",
+            "name":"Milk",
+            "amount":"1"
+        },
+        {
+            "_id":"5f1cb905c6b8ba5e59efc8a4",
+            "name":"Sugar",
+            "amount":"2"
+        }
+    ]
+}
+
+###
+### Get all orders
+GET {{url}}/api/{{chaistandId}}/orders

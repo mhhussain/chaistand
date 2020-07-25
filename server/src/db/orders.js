@@ -6,13 +6,16 @@ const schema = yup.object().shape({
   chaistandId: yup.string().required(),
   cups: yup.number().required(),
   status: yup.string().required(),
-  mixins: yup.array().of(
-    yup.object().shape({
-      _id: yup.string().required(),
-      name: yup.string().required(),
-      amount: yup.number().required(),
-    }),
-  ),
+  mixins: yup
+    .array()
+    .of(
+      yup.object().shape({
+        _id: yup.string().required(),
+        name: yup.string().required(),
+        amount: yup.number().required(),
+      }),
+    )
+    .required(),
   createdDate: yup.date().required(),
   updatedDate: yup.date().required(),
 });
