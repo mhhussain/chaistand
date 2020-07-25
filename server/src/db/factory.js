@@ -29,6 +29,9 @@ const make = (collectionName, schema) => {
       const deleted = await collection.remove({ _id: id });
       return typeof deleted != 'undefined';
     },
+    validate: async (obj) => {
+      return schema.validate(obj);
+    },
   };
 };
 

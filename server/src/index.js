@@ -25,6 +25,19 @@ if (process.env.NODE_ENV === 'prod') {
   app.get(/.*/, (req, res) => res.sendFile(`{__dirname}/public/index.html`));
 }
 
+// Error handler
+app.use((e, req, res, next) => {
+  if (e.status) {
+    res.status(error.status);
+  } else {
+    res.status(500);
+  }
+  res.json({
+    message: e.message,
+    stack: process.env.NODE_ENV === 'production' ? 'NA' : e.stack,
+  });
+});
+
 app.listen(configs.PORT, () => {
   console.log(`Listening at http://localhost:${configs.PORT}`);
 });

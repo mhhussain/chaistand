@@ -1,20 +1,34 @@
 const e = require('express');
 const recipesModel = require('../../db/recipes');
 const mixinsModel = require('../../db/mixins');
+const chaistandModel = require('../../db/chaistand');
 
 const router = e.Router();
 
 /// CHAISTAND
 // GET
 // All chaistands
-router.get('/', (req, res) => {
-  res.json({ message: 'not_implemented' });
+router.get('/', async (req, res) => {
+  const allChaistands = await chaistandModel.find({});
+  res.json(allChaistands);
 });
 
 // POST
 // Create new chaistand
-router.post('/', (req, res) => {
-  res.json({ message: 'not_implemented' });
+router.post('/', async (req, res) => {
+  const { name, summary, recipeId } = req.body;
+
+  const newChaistand = {
+    name,
+    summary,
+    recipe: recipeId,
+    createdDate: new Date(),
+  };
+
+  chaistandModel.validate(newChaistand).then(async (val) => {
+    const createdChaistand = await chaistandModel.create(val);
+    res.json(createdChaistand);
+  });
 });
 
 /// RECIPES
