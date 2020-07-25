@@ -1,4 +1,5 @@
 const e = require('express');
+const recipesModel = require('../../db/recipes');
 
 const router = e.Router();
 
@@ -6,12 +7,6 @@ const router = e.Router();
 // GET
 // All chaistands
 router.get('/', (req, res) => {
-  res.json({ message: 'not_implemented' });
-});
-
-// GET
-// Get chaistand by ID
-router.get('/:id', (req, res) => {
   res.json({ message: 'not_implemented' });
 });
 
@@ -24,14 +19,21 @@ router.post('/', (req, res) => {
 /// RECIPES
 // GET
 // Get all recipes
-router.get('/recipes', (req, res) => {
-  res.json({ message: 'not_implemented' });
+router.get('/recipes', async (req, res) => {
+  const allRecipes = await recipesModel.find({});
+  res.json(allRecipes);
 });
 
 /// MIXINS
 // GET
 // Get all mixins
 router.get('/mixins', (req, res) => {
+  res.json({ message: 'not_implemented' });
+});
+
+// GET
+// Get chaistand by ID
+router.get('/:id', (req, res) => {
   res.json({ message: 'not_implemented' });
 });
 
