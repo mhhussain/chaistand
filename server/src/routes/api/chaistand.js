@@ -2,6 +2,7 @@ const e = require('express');
 const recipesModel = require('../../db/recipes');
 const mixinsModel = require('../../db/mixins');
 const chaistandModel = require('../../db/chaistand');
+const ordersModel = require('../../db/orders');
 
 const router = e.Router();
 
@@ -25,10 +26,15 @@ router.post('/', async (req, res) => {
     createdDate: new Date(),
   };
 
-  chaistandModel.validate(newChaistand).then(async (val) => {
-    const createdChaistand = await chaistandModel.create(val);
-    res.json(createdChaistand);
-  });
+  chaistandModel
+    .validate(newChaistand)
+    .then(async (val) => {
+      const createdChaistand = await chaistandModel.create(val);
+      res.json(createdChaistand);
+    })
+    .catch((e) => {
+      res.status(500).json(e);
+    });
 });
 
 /// RECIPES
@@ -49,32 +55,58 @@ router.get('/mixins', async (req, res) => {
 
 // GET
 // Get chaistand by ID
-router.get('/:id', (req, res) => {
-  res.json({ message: 'not_implemented' });
+router.get('/:id', async (req, res) => {
+  const { id: _id } = req.params;
+
+  const chaistand = await chaistandModel.find({ _id });
+  res.json(chaistand);
 });
 
 /// ORDERS
 // GET
 // Get all orders
-router.get('/:id/order', (req, res) => {
-  res.json({ message: 'not_implemented' });
+router.get('/:id/orders', async (req, res) => {
+  const { id: chaistandId } = req.params;
+  const allOrders = await ordersModel.find({ chaistandId });
+  res.json(allOrders);
 });
 
 // POST
 // Create new order
-router.post('/:id/order', (req, res) => {
-  res.json({ message: 'not_implemented' });
+router.post('/:id/orders', async (req, res) => {
+  const { id: chaistandId } = req.params;
+  const { name, cups, mixins } = req.body;
+
+  const newOrder = {
+    name,
+    chaistandId,
+    cups,
+    status: 'brewing',
+    mixins,
+    createdDate: new Date(),
+    updatedDate: new Date(),
+  };
+
+  ordersModel
+    .validate(newOrder)
+    .then(async (val) => {
+      const createdOrder = await ordersModel.create(newOrder);
+      res.json(createdOrder);
+    })
+    .catch((e) => {
+      res.status(500).json(e);
+    });
 });
 
 // GET
-// Get order by ID
-router.get('/:id/order/:orderId', (req, res) => {
+// Get order by name
+router.get('/:id/orders/:name', (req, res) => {
   res.json({ message: 'not_implemented' });
 });
 
 // PATCH
-// Update order by ID
-router.patch('/:id/order/:orderId', (req, res) => {
+// Update order by name
+router.patch('/:id/orders/:name', (req, res) => {
   res.json({ message: 'not_implemented' });
 });
 

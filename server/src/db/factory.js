@@ -16,7 +16,7 @@ const make = (collectionName, schema) => {
       return all;
     },
     create: async (obj) => {
-      schema.validate(obj);
+      //schema.validate(obj);
       const createdObj = await collection.insert(obj);
       return createdObj;
     },

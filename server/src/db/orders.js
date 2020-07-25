@@ -2,7 +2,6 @@ const factory = require('./factory');
 const yup = require('yup');
 
 const schema = yup.object().shape({
-  _id: yup.string().trim().required(),
   name: yup.string().trim().required(),
   chaistandId: yup.string().required(),
   cups: yup.number().required(),
