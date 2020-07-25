@@ -16,6 +16,9 @@ app.get('/ping', (req, res) => {
   res.json({ message: 'pong' });
 });
 
+const chaistand = require('./routes/api/chaistand');
+app.use('/api', chaistand);
+
 // handle static front-end client app for PROD
 if (process.env.NODE_ENV === 'prod') {
   app.static(e.static(`{__dirname}/public/`));
