@@ -1,5 +1,6 @@
 const e = require('express');
 const recipesModel = require('../../db/recipes');
+const mixinsModel = require('../../db/mixins');
 
 const router = e.Router();
 
@@ -27,8 +28,9 @@ router.get('/recipes', async (req, res) => {
 /// MIXINS
 // GET
 // Get all mixins
-router.get('/mixins', (req, res) => {
-  res.json({ message: 'not_implemented' });
+router.get('/mixins', async (req, res) => {
+  const allMixins = await mixinsModel.find({});
+  res.json(allMixins);
 });
 
 // GET
