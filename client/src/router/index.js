@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Chaistands from '../views/Chaistands.vue';
 import CreateChaistand from '../views/CreateChaistand.vue';
 import Chaistand from '../views/Chaistand.vue';
+import CreateOrder from '../views/CreateOrder.vue';
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,12 @@ const routes = [
     path: '/chaistand/:id',
     name: 'Chaistand',
     component: Chaistand,
+    props: true,
+  },
+  {
+    path: '/chaistand/:id/order/create',
+    name: 'CreateOrder',
+    component: CreateOrder,
     props: true,
   },
 ];

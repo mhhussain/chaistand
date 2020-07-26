@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import ChaistandApi from '../api/chaistandApi';
+import chaistandApi from '../api/chaistandApi';
 
 export default {
   name: 'CreateChaistand',
@@ -47,7 +47,8 @@ export default {
   },
   methods: {
     async createChaistand(name, summary) {
-      ChaistandApi.createChaistand(name, summary)
+      chaistandApi
+        .createChaistand(name, summary)
         .then(() => this.$router.push('/'))
         .catch((e) => (this.error = e));
     },

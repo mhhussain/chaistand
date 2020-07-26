@@ -25,6 +25,12 @@
         <p class="status">{{ order.status }}</p>
       </div>
     </div>
+    <input
+      type="button"
+      class="btn btn-primary"
+      value="Add Order"
+      v-on:click="gotoCreateOrder(chaistand._id)"
+    />
   </div>
 </template>
 
@@ -51,6 +57,11 @@ export default {
     } catch (e) {
       this.error = e.message;
     }
+  },
+  methods: {
+    gotoCreateOrder(id) {
+      this.$router.push(`/chaistand/${id}/order/create`);
+    },
   },
 };
 </script>

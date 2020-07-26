@@ -43,6 +43,24 @@ class ChaistandApi {
         .catch((e) => reject(e));
     });
   }
+
+  static getMixins() {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`${url}/mixins`)
+        .then((res) => resolve(res.data))
+        .catch((e) => reject(e));
+    });
+  }
+
+  static getRecipes() {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`${url}/recipes`)
+        .then((res) => resolve(res.data))
+        .catch((e) => reject(e));
+    });
+  }
 }
 
 export default ChaistandApi;
