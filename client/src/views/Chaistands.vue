@@ -2,19 +2,40 @@
   <div class="container">
     <p class="error" v-if="error">{{ error }}</p>
     <div class="chaistands-container">
-      <div
-        class="chaistand"
-        v-for="(chaistand, index) in chaistands"
-        v-bind:item="chaistand"
-        v-bind:index="index"
-        v-bind:key="chaistand._id"
-        v-on:click="gotoChaistand(chaistand._id)"
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" class="text-primary">Event</th>
+            <th scope="col" class="text-primary">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            id="chaistand"
+            class="table-active"
+            v-for="(chaistand, index) in chaistands"
+            v-bind:item="chaistand"
+            v-bind:index="index"
+            v-bind:key="chaistand._id"
+            v-on:click="gotoChaistand(chaistand._id)"
+          >
+            <td scope="col" class="text-primary">{{ index + 1 }}</td>
+            <td>
+              <p class="text-primary">{{ chaistand.name }}</p>
+              <p class="font-weight-lighter text-secondary">
+                {{ chaistand.recipe }}
+              </p>
+            </td>
+            <td><div class="col text-success">brewing</div></td>
+          </tr>
+        </tbody>
+      </table>
+      <button
+        type="button"
+        class="btn btn-success btn-block"
+        v-on:click="createChaiStand()"
       >
-        <h1>{{ chaistand.name }}</h1>
-        <p>{{ chaistand.summary }}</p>
-        <p>{{ chaistand.recipe }}</p>
-      </div>
-      <button type="button" v-on:click="createChaiStand()">
         New Chaistand
       </button>
     </div>

@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <p class="error" v-if="error">{{ error }}</p>
-    <p>{{ chaistand.name }}</p>
+    <p class="text-secondary">{{ chaistand.name }}</p>
     <div class="orders-container">
       <div
-        class="order"
+        id="order"
+        class="card text-white bg-secondary mb-3"
+        style="max-width: 18rem;"
         v-for="(order, index) in orders"
         v-bind:item="order"
         v-bind:index="index"
@@ -27,7 +29,7 @@
     </div>
     <input
       type="button"
-      class="btn btn-primary"
+      class="btn btn-success btn-block"
       value="Add Order"
       v-on:click="gotoCreateOrder(chaistand._id)"
     />
