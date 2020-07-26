@@ -142,7 +142,7 @@ export default {
     cancelOrder(chaistandId, orderId) {
       chaistandApi
         .cancelOrder(chaistandId, orderId)
-        .then(() => this.$forceUpdate());
+        .then(() => this.$router.push(`/`));
     },
     totalCups() {
       return _.sumBy(this.orders, (o) => {
