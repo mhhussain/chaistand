@@ -87,13 +87,19 @@
             </div>
           </div>
         </div>
-
-        <input
-          type="button"
-          class="btn btn-success btn-block"
-          value="Add Order"
-          v-on:click="gotoCreateOrder(chaistand._id)"
-        />
+      </div>
+      <input
+        type="button"
+        class="btn btn-success btn-block"
+        value="Add Order"
+        v-on:click="gotoCreateOrder(chaistand._id)"
+      />
+      <hr />
+      <div class="card" v-if="orders.length > 0">
+        <div class="card-header">Summary</div>
+        <div class="card-body">
+          <h5 class="card-title">Total cups x{{ totalCups() }}</h5>
+        </div>
       </div>
     </div>
 
@@ -103,6 +109,7 @@
 
 <script>
 import chaistandApi from '../api/chaistandApi';
+import _ from 'lodash';
 
 export default {
   name: 'Chaistand',
@@ -123,6 +130,7 @@ export default {
       const orders = await chaistandApi.getOrders(id);
       this.chaistand = chaistand[0];
       this.orders = orders;
+      console.log(orders);
     } catch (e) {
       this.error = e.message;
     }
@@ -134,7 +142,12 @@ export default {
     cancelOrder(chaistandId, orderId) {
       chaistandApi
         .cancelOrder(chaistandId, orderId)
-        .then(() => (this.componentKey += 1));
+        .then(() => this.$forceUpdate());
+    },
+    totalCups() {
+      return _.sumBy(this.orders, (o) => {
+        return Number(o.cups);
+      });
     },
   },
 };
