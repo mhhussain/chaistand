@@ -86,6 +86,10 @@ export default {
   },
   methods: {
     createOrder(id, name, cups, selectedMixins) {
+      if (!name || !cups) {
+        this.error = 'need name and cups';
+        return;
+      }
       chaistandApi
         .createOrder(id, name, cups, selectedMixins)
         .then(() => this.$router.push(`/chaistand/${id}`))
