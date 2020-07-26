@@ -44,6 +44,19 @@ class ChaistandApi {
     });
   }
 
+  static createOrder(chaistandId, name, cups, mixins) {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`${url}/${chaistandId}/orders`, {
+          name,
+          cups,
+          mixins,
+        })
+        .then((res) => resolve(res.data))
+        .catch((e) => reject(e));
+    });
+  }
+
   static getMixins() {
     return new Promise((resolve, reject) => {
       axios

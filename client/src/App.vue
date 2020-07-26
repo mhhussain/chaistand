@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <h1>Chastand</h1>
+      <a href="/">
+        <h1>Chaistand</h1>
+      </a>
     </div>
     <router-view />
   </div>
