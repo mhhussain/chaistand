@@ -2,7 +2,7 @@
   <div id="app" class="container">
     <div id="nav">
       <a href="/">
-        <h1 class="display-4">Chaistand</h1>
+        <h1 class="display-4 text-primary">Chaistand</h1>
       </a>
     </div>
     <router-view />
@@ -15,7 +15,7 @@ html {
   height: 100vh;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
