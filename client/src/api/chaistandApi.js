@@ -57,6 +57,15 @@ class ChaistandApi {
     });
   }
 
+  static cancelOrder(chaistandId, orderId) {
+    return new Promise((resolve, reject) => {
+      axios
+        .delete(`${url}/${chaistandId}/orders/${orderId}`)
+        .then((res) => resolve(res.data))
+        .catch((e) => reject(e));
+    });
+  }
+
   static getMixins() {
     return new Promise((resolve, reject) => {
       axios

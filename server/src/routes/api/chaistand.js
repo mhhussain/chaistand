@@ -122,4 +122,13 @@ router.patch('/:id/orders/:orderId', async (req, res) => {
   res.json(typeof updatedOrder != undefined);
 });
 
+// DELETE
+// Delete order by id
+router.delete('/:id/orders/:orderId', async (req, res) => {
+  const { id: chaistandId, orderId } = req.params;
+
+  const deletedOrder = await ordersModel.remove(orderId);
+  res.json(typeof deletedOrder != undefined);
+});
+
 module.exports = router;
