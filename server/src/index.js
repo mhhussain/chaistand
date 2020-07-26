@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'prod') {
 // Error handler
 app.use((e, req, res, next) => {
   if (e.status) {
-    res.status(error.status);
+    res.status(e.status);
   } else {
     res.status(500);
   }

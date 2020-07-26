@@ -1,5 +1,21 @@
 @url=http://localhost:9002
-@chaistandId=5f1cbf0a841bd95994c3d692
+@chaistandId=5f1cd9cf8f284469d5f99ce2
+
+###
+### Get all recipes
+GET {{url}}/api/recipes
+
+###
+### Create a chaistand
+POST {{url}}/api
+Content-Type: application/json
+
+{
+    "name": "Our second chai",
+    "summary": "Testing more things out",
+    "recipeId": "Classic Chai"
+}
+
 
 ###
 ### Get all chaistands
@@ -45,11 +61,11 @@ GET {{url}}/api/{{chaistandId}}/orders/Sakina%20wifey
 
 ###
 ### Update order by ID
-PATCH {{url}}/api/{{chaistandId}}/orders/5f1cc4be16f9555e0033ac5c
+PATCH {{url}}/api/{{chaistandId}}/orders/5f1ccfd77f45d266f73a066d
 Content-Type: application/json
 
 {
-    "name": "Sakina wifey",
+    "name": "Sakina the wifey",
     "cups": 2,
     "mixins": [
         {
@@ -60,7 +76,7 @@ Content-Type: application/json
         {
             "_id":"5f1cb905c6b8ba5e59efc8a4",
             "name":"Sugar",
-            "amount":"3"
+            "amount":"2"
         }
     ]
 }
