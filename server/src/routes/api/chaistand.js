@@ -108,8 +108,18 @@ router.get('/:id/orders/:name', async (req, res) => {
 
 // PATCH
 // Update order by name
-router.patch('/:id/orders/:name', (req, res) => {
-  res.json({ message: 'not_implemented' });
+router.patch('/:id/orders/:orderId', async (req, res) => {
+  const { id: chaistandId, orderId } = req.params;
+  const { name, cups, mixins } = req.body;
+
+  const updatedOrder = await ordersModel.update(orderId, null, {
+    name: name,
+    cups: cups,
+    mixins: mixins,
+    updatedDate: new Date(),
+  });
+
+  res.json(typeof updatedOrder != undefined);
 });
 
 module.exports = router;

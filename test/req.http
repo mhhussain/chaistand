@@ -41,4 +41,26 @@ GET {{url}}/api/{{chaistandId}}/orders
 
 ###
 ### Get order by name
-GET {{url}}/api/{{chaistandId}}/orders/Sakina
+GET {{url}}/api/{{chaistandId}}/orders/Sakina%20wifey
+
+###
+### Update order by ID
+PATCH {{url}}/api/{{chaistandId}}/orders/5f1cc4be16f9555e0033ac5c
+Content-Type: application/json
+
+{
+    "name": "Sakina wifey",
+    "cups": 2,
+    "mixins": [
+        {
+            "_id":"5f1cb8f7c6b8ba5e59efc8a3",
+            "name":"Milk",
+            "amount":"2"
+        },
+        {
+            "_id":"5f1cb905c6b8ba5e59efc8a4",
+            "name":"Sugar",
+            "amount":"3"
+        }
+    ]
+}
