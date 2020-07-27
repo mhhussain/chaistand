@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const _ = require('lodash');
 
-const configs = require('./configs');
+const configs = require('./src/configs');
 
 let app = e();
 app.use(cors());
@@ -16,7 +16,7 @@ app.get('/ping', (req, res) => {
   res.json({ message: 'pong' });
 });
 
-const chaistand = require('./routes/api/chaistand');
+const chaistand = require('./src/routes/api/chaistand');
 app.use('/api', chaistand);
 
 // handle static front-end client app for PROD
