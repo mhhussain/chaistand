@@ -2,31 +2,36 @@
   <div class="container">
     <p>Event</p>
     <p class="error" v-if="error">{{ error }}</p>
-    <div>
-      <label for="chaistand-name">Name</label>
+    <div class="row">
+      <label for="chaistand-name" class="text-primary col-2 text-right"
+        >Name</label
+      >
       <input
         type="text"
-        class="form-control"
+        class="form-control col-8"
         v-model="name"
         name="chaistand-name"
         id="chaistand-name"
         placeholder="enter name for chaistand"
       />
     </div>
-    <div>
-      <label for="chaistand-summary">Summary</label>
+    <div class="row">
+      <label for="chaistand-summary" class="text-primary col-2 text-right"
+        >Summary</label
+      >
       <input
         type="text"
-        class="form-control"
+        class="form-control col-8"
         v-model="summary"
         name="chaistand-summary"
         id="chaistand-summary"
         placeholder="enter summary for chaistand"
       />
     </div>
+    <hr />
     <input
       type="button"
-      class="btn btn-primary"
+      class="btn btn-success btn-block"
       value="Order Up!"
       v-on:click="createChaistand(name, summary)"
     />
