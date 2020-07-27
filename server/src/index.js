@@ -20,7 +20,7 @@ const chaistand = require('./routes/api/chaistand');
 app.use('/api', chaistand);
 
 // handle static front-end client app for PROD
-if (process.env.NODE_ENV === 'prod') {
+if (process.env.NODE_ENV === 'production') {
   app.use(e.static(`${__dirname}/../public/`));
   app.get(/.*/, (req, res) =>
     res.sendFile(`${__dirname}/../public/index.html`)
@@ -36,7 +36,7 @@ app.use((e, req, res, next) => {
   }
   res.json({
     message: e.message,
-    stack: process.env.NODE_ENV === 'prod' ? 'NA' : e.stack,
+    stack: process.env.NODE_ENV === 'production' ? 'NA' : e.stack,
   });
 });
 
