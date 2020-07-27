@@ -21,7 +21,9 @@
           >
             <td>
               <p class="text-primary">{{ chaistand.name }}</p>
-              <p class="font-weight-lighter text-secondary">{{ chaistand.recipe }}</p>
+              <p class="font-weight-lighter text-secondary">
+                {{ chaistand.recipe }}
+              </p>
             </td>
             <td>
               <div class="col text-success">brewing</div>
@@ -37,22 +39,17 @@
           </tr>
         </tbody>
       </table>
-      <button
-        type="button"
-        class="btn btn-success btn-block"
-        v-on:click="createChaiStand()"
-      >New Chaistand</button>
     </div>
   </div>
 </template>
 
 <script>
-import chaistandApi from "../api/chaistandApi";
+import chaistandApi from '../api/chaistandApi';
 
 export default {
-  name: "Chaistand",
+  name: 'Chaistand',
   data() {
-    return { error: "", chaistands: [] };
+    return { error: '', chaistands: [] };
   },
   async created() {
     try {
@@ -63,7 +60,7 @@ export default {
   },
   methods: {
     async createChaiStand() {
-      this.$router.push("create");
+      this.$router.push('create');
     },
     async gotoChaistand(id) {
       this.$router.push(`chaistand/${id}`);
