@@ -5,9 +5,9 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col" class="text-primary">Event</th>
             <th scope="col" class="text-primary">Status</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -18,16 +18,22 @@
             v-bind:item="chaistand"
             v-bind:index="index"
             v-bind:key="chaistand._id"
-            v-on:click="gotoChaistand(chaistand._id)"
           >
-            <td scope="col" class="text-primary">{{ index + 1 }}</td>
             <td>
               <p class="text-primary">{{ chaistand.name }}</p>
-              <p class="font-weight-lighter text-secondary">
-                {{ chaistand.recipe }}
-              </p>
+              <p class="font-weight-lighter text-secondary">{{ chaistand.recipe }}</p>
             </td>
-            <td><div class="col text-success">brewing</div></td>
+            <td>
+              <div class="col text-success">brewing</div>
+            </td>
+            <td>
+              <input
+                type="button"
+                class="btn btn-success"
+                v-on:click="gotoChaistand(chaistand._id)"
+                value="view"
+              />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -35,20 +41,18 @@
         type="button"
         class="btn btn-success btn-block"
         v-on:click="createChaiStand()"
-      >
-        New Chaistand
-      </button>
+      >New Chaistand</button>
     </div>
   </div>
 </template>
 
 <script>
-import chaistandApi from '../api/chaistandApi';
+import chaistandApi from "../api/chaistandApi";
 
 export default {
-  name: 'Chaistand',
+  name: "Chaistand",
   data() {
-    return { error: '', chaistands: [] };
+    return { error: "", chaistands: [] };
   },
   async created() {
     try {
@@ -59,7 +63,7 @@ export default {
   },
   methods: {
     async createChaiStand() {
-      this.$router.push('create');
+      this.$router.push("create");
     },
     async gotoChaistand(id) {
       this.$router.push(`chaistand/${id}`);
