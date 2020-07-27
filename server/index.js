@@ -21,10 +21,8 @@ app.use('/api', chaistand);
 
 // handle static front-end client app for PROD
 if (process.env.NODE_ENV === 'production') {
-  app.use(e.static(`${__dirname}/../public/`));
-  app.get(/.*/, (req, res) =>
-    res.sendFile(`${__dirname}/../public/index.html`)
-  );
+  app.use(e.static(`${__dirname}/public/`));
+  app.get(/.*/, (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 }
 
 // Error handler
